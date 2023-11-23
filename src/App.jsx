@@ -79,8 +79,8 @@ function App() {
           </ScrollView>
           {/* Popular Recipes */}
           <Text style={styles.heading_1}>Popular Recipes</Text>
-          {[...new Array(10)].map((item, key) => (
-            <View style={{flexDirection:'row', gap: 15, marginTop: 15}}>
+          {[...new Array(3)].map((item, key) => (
+            <View style={{flexDirection:'row', gap: 15, marginTop: 15}} key={key}>
               <Image source={require('./assets/yellow.png')}/>
 
               <View>
@@ -96,6 +96,7 @@ function App() {
               </View>
             </View>
           ))}
+          <View style={{marginBottom: 50}}/>
         </ScrollView>
       </SafeAreaView>
     </PaperProvider>
