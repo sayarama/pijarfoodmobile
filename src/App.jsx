@@ -116,7 +116,7 @@ function App() {
           <Text style={styles.heading_1}>Popular Recipes</Text>
           {[...new Array(5)].map((item, key) => (
             <View style={{flexDirection:'row', gap: 15, marginTop: 15}} key={key}>
-              <Image source={require('./assets/yellow.png')}/>
+              <Image source={require('./assets/salmon.png')}/>
 
               <View>
                 <Text style={{color: '#666666', fontSize: 16, fontWeight: 800}}>
