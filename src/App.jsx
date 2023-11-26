@@ -5,9 +5,59 @@
  * @format
  */
 
+
+// Orange la pasta, spicy ramenyu, lobster toast
+
 import React, { useState } from 'react';
-import {SafeAreaView, StyleSheet, View, Image, ScrollView, ImageBackground} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Image, ScrollView, ImageBackground, FlatList} from 'react-native';
 import {PaperProvider, Searchbar, Text} from 'react-native-paper';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import BreadImg from './assets/bread.png'
+import EggImg from './assets/egg.png'
+
+const NewRecipe = [
+  {
+    id: '1',
+    title: 'Banana Lemonilo',
+    image: BreadImg
+  },
+  {
+    id: '2',
+    title: 'Sandwich Egg',
+    image: EggImg
+  },
+  {
+    id: '3',
+    title: 'Banana Lemonilo',
+    image: BreadImg
+  },
+  {
+    id: '4',
+    title: 'Sandwich Egg',
+    image: EggImg
+  },
+
+];
+
+
+const Item = ({item}) => (
+  <View style={{borderRadius: 10, marginTop: 15}}>
+                  <ImageBackground
+                  source={item.image}
+                  resizeMode='cover'
+                  imageStyle={{borderRadius: 10}}
+                  style={{
+                    height:150,
+                    width:130,
+                    padding:20,
+                    justifyContent:'flex-end',
+                  }}>
+                    <Text style={{color: '#fff', fontSize: 14, fontWeight: 500}}>
+                      {item.title}
+                    </Text>
+                  </ImageBackground>
+                </View>
+);
 
 function App() {
   const [keyword, setKeyword] = useState('');
@@ -19,6 +69,7 @@ function App() {
             label="Search Pasta, Bread, etc"
             value={keyword}
             style={styles.searchBox}
+            icon={()=><Ionicons name="search" size={30}/>}
             onChangeText={text => setKeyword(text)}
           />
 
@@ -55,31 +106,15 @@ function App() {
           </View>
           {/* New Repices */}
           <Text style={styles.heading_1}>New Recipes</Text>
-          <ScrollView horizontal={true}>
-            <View style={{flexDirection: 'row', gap: 20}}>
-              {[...new Array(8)].map((item, key) => (
-                <View style={{borderRadius: 10, marginTop: 15}} key={key}>
-                  <ImageBackground
-                  source={require('./assets/salmon.png')}
-                  resizeMode='cover'
-                  imageStyle={{borderRadius: 10}}
-                  style={{
-                    height:160,
-                    width:130,
-                    padding:10,
-                    justifyContent:'flex-end',
-                  }}>
-                    <Text style={{color: '#fff', fontSize: 14, fontWeight: 500}}>
-                      Banana Lemonilo
-                    </Text>
-                  </ImageBackground>
-                </View>
-              ))}
-            </View>
-          </ScrollView>
+          <FlatList
+            horizontal={true}
+            data={NewRecipe}
+            renderItem={({item}) => <Item item={item}/>}
+            keyExtractor={item => item.id}
+          ></FlatList>
           {/* Popular Recipes */}
           <Text style={styles.heading_1}>Popular Recipes</Text>
-          {[...new Array(3)].map((item, key) => (
+          {[...new Array(5)].map((item, key) => (
             <View style={{flexDirection:'row', gap: 15, marginTop: 15}} key={key}>
               <Image source={require('./assets/yellow.png')}/>
 
