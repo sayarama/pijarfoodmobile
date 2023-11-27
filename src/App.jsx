@@ -82,19 +82,19 @@ function App() {
           }}>
             {[
               {
-                icons: <Image source={require('./assets/green.png')}/>,
+                icons: <Image  style={{width: 80, height: 80, borderRadius: 20}} source={require('./assets/soup.png')}/>,
                 label: 'Soup',
               },
               {
-                icons: <Image source={require('./assets/yellow.png')}/>,
+                icons: <Image style={{width: 80, height: 80, borderRadius: 20}} source={require('./assets/chicken.png')}/>,
                 label: 'Chicken',
               },
               {
-                icons: <Image source={require('./assets/black.png')}/>,
+                icons: <Image style={{width: 80, height: 80, borderRadius: 20}} source={require('./assets/seafood.jpg')}/>,
                 label: 'Seafood',
               },
               {
-                icons: <Image source={require('./assets/yellow.png')}/>,
+                icons: <Image style={{width: 80, height: 80, borderRadius: 20}} source={require('./assets/dessert.png')}/>,
                 label: 'Dessert',
               },
             ].map((item, key) => (
