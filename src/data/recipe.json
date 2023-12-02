@@ -1,0 +1,122 @@
+[
+    {
+        "image": "https://www.budgetbytes.com/wp-content/uploads/2023/08/Stuffed-Bell-Peppers-close.jpg",
+        "title": "Stuffed Bell Peppers",
+        "slug": "stuffed-bell-peppers",
+        "ingredients": "5 large red, orange, or yellow bell peppers, 1 pound 90-percent lean ground beef, One 14.5-ounce can fire-roasted diced tomatoes, 2 cups shredded pepper jack cheese (from one 8-ounce block)",
+        "video": {
+            "title": "Stuffed Bell Peppers",
+            "link": "https://www.youtube.com/watch?v=ektsiKFVqks"
+        },
+        "isPopular": true,
+        "isNew": false
+    },
+    {
+        "image": "https://simply-delicious-food.com/wp-content/uploads/2022/01/Image-2022-05-23-at-08.21.jpg",
+        "title": "Chicken Alfredo Pasta",
+        "slug": "chicken-alfredo-pasta",
+        "ingredients": "1 pound fettuccine pasta, 2 cups cooked chicken breast, 1 cup heavy cream, 1 cup grated Parmesan cheese",
+        "video": {
+            "title": "Chicken Alfredo Pasta",
+            "link": "https://www.youtube.com/watch?v=LPPcNPdq_j4"
+        },
+        "isPopular": false,
+        "isNew": true
+    },
+    {
+        "image": "https://www.eatingwell.com/thmb/brHFTvx40kZq844uGiitI4hWQKo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/grilled-salmon-and-vegetables-with-charred-lemon-vinaigrette-a4d5a04715bf427d86fdbadea6272679.jpg",
+        "title": "Grilled Salmon",
+        "slug": "grilled-salmon",
+        "ingredients": "4 salmon fillets, 1/4 cup olive oil, 2 tablespoons lemon juice, 2 cloves garlic, minced",
+        "video": {
+            "title": "Grilled Salmon",
+            "link": "https://www.youtube.com/watch?v=n7SnRm0RpdU"
+        },
+        "isPopular": true,
+        "isNew": false
+    },
+    {
+        "image": "https://hips.hearstapps.com/hmg-prod/images/veggie-stir-fry-1597687367.jpg?crop=0.793xw:0.793xh;0.0619xw,0.0928xh&resize=1200:*",
+        "title": "Vegetarian Stir-Fry",
+        "slug": "vegetarian-stir-fry",
+        "ingredients": "Assorted vegetables (broccoli, bell peppers, carrots), 1 cup tofu, 3 tablespoons soy sauce, 2 tablespoons sesame oil",
+        "video": {
+            "title": "Vegetarian Stir-Fry",
+            "link": "https://m.youtube.com/watch?v=lNdFgQ4fBCI"
+        },
+        "isPopular": false,
+        "isNew": true
+    },
+    {
+        "image": "https://www.allrecipes.com/thmb/jiV_4f8vXFle1RdFLgd8-_31J3M=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/229960-shrimp-scampi-with-pasta-DDMFS-4x3-e065ddef4e6d44479d37b4523808cc23.jpg",
+        "title": "Shrimp Scampi",
+        "slug": "shrimp-scampi",
+        "ingredients": "1 pound shrimp, 3 tablespoons butter, 4 cloves garlic, minced, 1/4 cup white wine",
+        "video": {
+            "title": "Shrimp Scampi",
+            "link": "https://www.youtube.com/watch?v=P512JO-OdAM"
+        },
+        "isPopular": true,
+        "isNew": false
+    },
+    {
+        "image": "https://www.eatingwell.com/thmb/N_0xtwSPPGe7L1YA7O8Uhxm9LfA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MushroomRisotto-Beauty-2825-b89fc407ca374feb997e10db2854a2a7.jpg",
+        "title": "Mushroom Risotto",
+        "slug": "mushroom-risotto",
+        "ingredients": "1 cup Arborio rice, 1/2 cup dry white wine, 4 cups chicken or vegetable broth, 1 cup sliced mushrooms",
+        "video": {
+            "title": "Mushroom Risotto",
+            "link": "https://www.youtube.com/watch?v=ju9H1RlYNxk"
+        },
+        "isPopular": false,
+        "isNew": true
+    },
+    {
+        "image": "https://www.peelwithzeal.com/wp-content/uploads/2023/01/BBQ-shredded-beef.jpg",
+        "title": "BBQ Pulled Beef",
+        "slug": "bbq-pulled-beef",
+        "ingredients": "2 pounds beef shoulder, 1 cup BBQ sauce, 1 tablespoon brown sugar, 1 teaspoon smoked paprika",
+        "video": {
+            "title": "BBQ Pulled beef",
+            "link": "https://www.youtube.com/watch?v=FCVwKqQkZHg"
+        },
+        "isPopular": true,
+        "isNew": false
+    },
+    {
+        "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Caprese-Salad_EXPS_FT20_50347_F_0610_1_home.jpg",
+        "title": "Caprese Salad",
+        "slug": "caprese-salad",
+        "ingredients": "Tomatoes, fresh mozzarella, fresh basil, balsamic glaze",
+        "video": {
+            "title": "Caprese Salad",
+            "link": "https://www.youtube.com/watch?v=aG7IR9ZRzWw"
+        },
+        "isPopular": false,
+        "isNew": true
+    },
+    {
+        "image": "https://www.wholesomeyum.com/wp-content/uploads/2023/02/wholesomeyum-Lemon-Garlic-Chicken-16.jpg",
+        "title": "Lemon Garlic Chicken",
+        "slug": "lemon-garlic-chicken",
+        "ingredients": "4 chicken breasts, 1/4 cup olive oil, 3 cloves garlic, minced, 2 lemons, juiced",
+        "video": {
+            "title": "Lemon Garlic Chicken",
+            "link": "https://www.youtube.com/watch?v=uHtm-_WSg2w"
+        },
+        "isPopular": true,
+        "isNew": false
+    },
+    {
+        "image": "https://www.bowlofdelicious.com/wp-content/uploads/2021/08/pumpkin-soup-square.jpg",
+        "title": "Pumpkin Soup",
+        "slug": "pumpkin-soup",
+        "ingredients": "2 cups pumpkin puree, 1 onion, 2 cloves garlic, 1 cup vegetable broth",
+        "video": {
+            "title": "Pumpkin Soup",
+            "link": "https://www.youtube.com/watch?v=olTgHutWRSI"
+        },
+        "isPopular": false,
+        "isNew": true
+    }
+]
