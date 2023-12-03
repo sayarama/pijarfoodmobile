@@ -10,15 +10,13 @@ function LoginScreen({navigation}) {
   const handleLogin = () => {
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        setTimeout(() => {
-            navigation.navigate('Home')
-        }, 2000)
+      .then((res) => {
+        navigation.navigate('Home')
         // User has not enrolled a second factor
       })
       .catch(error => {
         const {code} = error;
-        console.log("Errrorr", error)
+        setMessage(code)
         // Make sure to check if multi factor authentication is required
         if (code === 'auth/multi-factor-auth-required') {
           return;
@@ -41,6 +39,15 @@ function LoginScreen({navigation}) {
       <Text style={{color: '#999999', textAlign: 'center'}}>
         Login To Your Existing Acoount
       </Text>
+
+      {/* <Text style={{
+      ...(message === "" ? {
+        opacity: 0,
+      } : {
+        opacity: 100,
+        backgroundColor: '#921',
+      })
+    }}>{message}</Text> */}
 
       <View style={{padding: 25}}>
         <TextInput

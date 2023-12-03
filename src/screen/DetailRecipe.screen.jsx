@@ -1,6 +1,6 @@
 import React from 'react'
-import {ScrollView, View, ImageBackground, Pressable, Linking} from 'react-native'
-import { Button, Text } from 'react-native-paper'
+import {ScrollView, View, ImageBackground, Pressable, Linking, Image} from 'react-native'
+import { Button, Text, TextInput } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 function DetailRecipe({navigation, route}) {
@@ -132,6 +132,45 @@ function DetailRecipe({navigation, route}) {
                     </Pressable>
                 </View>
             ) : null}
+
+            {/* Comment */}
+            <View style={{marginTop: 20}}>
+                <TextInput
+                mode='outlined'
+                multiline={true}
+                numberOfLines={4}
+                placeholder='Comment :'
+                style={{backgroundColor: '#FAF7FD'}}
+                />
+
+                <Button
+                mode='contained'
+                style={{
+                    borderRadius: 5,
+                    backgroundColor: '#EFC81A',
+                    padding: 4,
+                    marginTop: 15,
+                    marginBottom: 15,
+                }}
+                >
+                Past Comment
+                </Button>
+
+                <Text>Comment</Text>
+
+                <View style={{flexDirection: 'row', gap: 20, marginTop: 15}}>
+                <Image
+                source={{uri: 'https://i.pravatar.cc/300'}}
+                height={40}
+                width={40}
+                style={{borderRadius: 100}}/>
+
+                <View>
+                    <Text style={{fontWeight: 'bold'}}>Rama</Text>
+                    <Text>Resep ini sangat bagus, terimakasih!! </Text>
+                </View>
+            </View>
+            </View>
         </View>
     </ScrollView>
 )
