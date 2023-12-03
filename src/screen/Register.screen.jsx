@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import {Button, Text, TextInput} from 'react-native-paper';
 import {Image, Pressable, ScrollView, View} from 'react-native';
 import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore';
 
 function RegisterScreen({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [passwordVerif, setPasswordVerif] = useState('')
+    const [fullname, setFullname] = useState('')
+    const [phone, setPhone] = useState('')
+
 
   const handleRegister = () => {
     auth()
@@ -26,6 +31,17 @@ function RegisterScreen({navigation}) {
 
         // Other error
       });
+
+      firestore()
+        .collection('users')
+        .add({
+          email,
+          password,
+          fullname,
+          phone,
+          created_at: new Date().getTime(),
+        })
+
   };
   return (
     <ScrollView>
@@ -45,6 +61,8 @@ function RegisterScreen({navigation}) {
       <View style={{padding: 25}}>
         <TextInput
           placeholder="Name"
+          onChangeText={setFullname}
+          value={fullname}
           mode="outlined"
           left={
             <TextInput.Icon
@@ -84,6 +102,8 @@ function RegisterScreen({navigation}) {
           placeholder="Phone Number"
           mode="outlined"
           keyboardType="phone-pad"
+          onChangeText={setPhone}
+          value={phone}
           left={
             <TextInput.Icon
               icon={() => (
@@ -122,6 +142,8 @@ function RegisterScreen({navigation}) {
           placeholder="New Password"
           secureTextEntry
           mode="outlined"
+          onChangeText={setPasswordVerif}
+          value={passwordVerif}
           left={
             <TextInput.Icon
               icon={() => (
