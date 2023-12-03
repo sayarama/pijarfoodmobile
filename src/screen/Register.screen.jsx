@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Text, TextInput} from 'react-native-paper';
+import {Button, Text, TextInput, Snackbar} from 'react-native-paper';
 import {Image, Pressable, ScrollView, View} from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
@@ -12,6 +12,9 @@ function RegisterScreen({navigation}) {
     const [fullname, setFullname] = useState('')
     const [phone, setPhone] = useState('')
 
+    const [visible, setVisible] = React.useState(false);
+    const [messageSnackbar, setMessageSnackbar] = React.useState('');
+    const hideSnackbar = () => setVisible(false);
 
   const handleRegister = () => {
     if (password === passwordVerif) {
@@ -20,13 +23,14 @@ function RegisterScreen({navigation}) {
       .then(() => {
         navigation.navigate('Login')
         // User has not enrolled a second factor
+        
       })
       .catch(error => {
         const {code} = error;
         // Make sure to check if multi factor authentication is required
         if (code === 'auth/multi-factor-auth-required') {
           return;
-        }
+        } 
 
         // Other error
       });
@@ -44,11 +48,26 @@ function RegisterScreen({navigation}) {
         })
       .then( () => {})
     } else {
+      setVisible(true);
+      setMessageSnackbar('Password is not same!');
     }
 
   };
   return (
     <ScrollView>
+      <Snackbar
+        wrapperStyle={{top: 0, position: 'absolute', zIndex: 99999}}
+        style={{backgroundColor: '#C12216'}}
+        visible={visible}
+        onDismiss={hideSnackbar}
+        action={{
+          label: 'X',
+          onPress: () => {
+            hideSnackbar();
+          },
+        }}>
+        <Text style={{color: 'white'}}>{messageSnackbar}</Text>
+      </Snackbar>
       <Text
         style={{
           color: '#EFC81A',

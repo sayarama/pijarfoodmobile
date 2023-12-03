@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import {Button, Text, TextInput} from 'react-native-paper';
+import {Button, Text, TextInput, Snackbar} from 'react-native-paper';
 import {Image, Pressable, ScrollView, View} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 function LoginScreen({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [message, setMessage] = useState('')
+
+    const [visible, setVisible] = React.useState(false);
+    const [messageSnackbar, setMessageSnackbar] = React.useState('');
+    const hideSnackbar = () => setVisible(false);
   const handleLogin = () => {
     auth()
       .signInWithEmailAndPassword(email, password)
@@ -18,8 +21,19 @@ function LoginScreen({navigation}) {
         const {code} = error;
         setMessage(code)
         // Make sure to check if multi factor authentication is required
-        if (code === 'auth/multi-factor-auth-required') {
-          return;
+        if (code === 'auth/email-already-exists') {
+          setVisible(true);
+          setMessageSnackbar('Email already exists!');
+        }
+
+        if (code === 'auth/invalid-email') {
+          setVisible(true);
+          setMessageSnackbar('Invalid email property!');
+        }
+
+        if (code === 'auth/invalid-password') {
+          setVisible(true);
+          setMessageSnackbar('Password must be six characters!');
         }
 
         // Other error
@@ -27,6 +41,19 @@ function LoginScreen({navigation}) {
   };
   return (
     <ScrollView>
+      <Snackbar
+        wrapperStyle={{top: 0, position: 'absolute', zIndex: 99999}}
+        style={{backgroundColor: '#C12216'}}
+        visible={visible}
+        onDismiss={hideSnackbar}
+        action={{
+          label: 'X',
+          onPress: () => {
+            hideSnackbar();
+          },
+        }}>
+        <Text style={{color: 'white'}}>{messageSnackbar}</Text>
+      </Snackbar>
       <Text
         style={{
           color: '#EFC81A',
