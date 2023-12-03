@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {StyleSheet, View, Image, ScrollView, ImageBackground, FlatList, Pressable} from 'react-native';
 import { Searchbar, Text} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import BreadImg from '../assets/bread.png'
 import EggImg from '../assets/egg.png'
+import firestore from '@react-native-firebase/firestore';
 
 import RecipeList from "../data/recipe.json"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const NewRecipe = [
@@ -51,9 +53,27 @@ const Item = ({item}) => (
                   </ImageBackground>
                 </View>
 );
-function HomeScreen({navigation}) {
-    
+function HomeScreen({navigation}) {   
 const [keyword, setKeyword] = React.useState('')
+
+function onResult(QuerySnapshot) {
+  QuerySnapshot.forEach(async(documentSnapshot) => {
+    try {
+      await AsyncStorage.setItem('User', JSON.stringify(documentSnapshot.data()))
+    } catch (error) {
+    }
+  });
+}
+
+function onError(error) {
+  console.error(error);
+}
+
+useEffect(() => {
+  firestore().collection('users').onSnapshot(onResult, onError);
+}, [])
+
+
   return (
     
     <ScrollView style={styles.root}>

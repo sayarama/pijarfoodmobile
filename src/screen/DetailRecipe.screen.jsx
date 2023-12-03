@@ -36,19 +36,17 @@ function DetailRecipe({ navigation, route }) {
             });
     };
 
-    React.useEffect(() => {
-        getComment();
-    }, []);
 
     const btnCommentHandler = async () => {
         const user = await AsyncStorage.getItem('User');
-        console.log("iniadalahuser",JSON.stringify(user, null, 2));
-        if (user) {
+        const userParse = JSON.parse(user)
+
+        if (user && userParse.fullname) {
             firestore()
                 .collection('comment')
                 .add({
                     message: comment,
-                    name: JSON.parse(user).email,
+                    name: userParse.fullname,
                     photo: 'https://i.pravatar.cc/300',
                     recipeSlug: slug,
                     created_at: new Date().getTime(),
@@ -57,25 +55,13 @@ function DetailRecipe({ navigation, route }) {
                     getComment();
                 });
         } else {
-            console.log('Login first');
-            setTimeout(() => {
-                navigation.navigate('Login');
-            }, 3000);
+            navigation.navigate('Register');
         }
     };
 
-    const onAuthStateChanged = async (user) => {
-        try {
-            await AsyncStorage.setItem('User', JSON.stringify(user));
-          } catch (e) {
-            // saving error
-          }
-      }
-    
-      useEffect(() => {
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        return subscriber; // unsubscribe on unmount
-      }, []);
+    useEffect(() => {
+        getComment()
+    }, [])
     
     return (
         <ScrollView>
@@ -239,7 +225,7 @@ function DetailRecipe({ navigation, route }) {
 
                     <Text>Comment</Text>
 
-                    {commentList.sort((newData, oldData) => oldData._data?.created_at - newData.data?.created_at).map((item, key) => (
+                    {commentList.sort((newData, oldData) => oldData._data?.created_at - newData._data?.created_at).map((item, key) => (
                         <View
                         style={{ flexDirection: 'row', gap: 20, marginTop: 15 }}
                         key={key}>

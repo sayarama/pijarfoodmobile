@@ -3,6 +3,7 @@ import {Button, Text, TextInput} from 'react-native-paper';
 import {Image, Pressable, ScrollView, View} from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function RegisterScreen({navigation}) {
     const [email, setEmail] = useState('')
@@ -13,16 +14,14 @@ function RegisterScreen({navigation}) {
 
 
   const handleRegister = () => {
-    auth()
+    if (password === passwordVerif) {
+      auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        setTimeout(() => {
-            navigation.navigate('Login')
-        }, 1000)
+        navigation.navigate('Login')
         // User has not enrolled a second factor
       })
       .catch(error => {
-        console.log('failed', error);
         const {code} = error;
         // Make sure to check if multi factor authentication is required
         if (code === 'auth/multi-factor-auth-required') {
@@ -31,6 +30,8 @@ function RegisterScreen({navigation}) {
 
         // Other error
       });
+
+      
 
       firestore()
         .collection('users')
@@ -41,6 +42,9 @@ function RegisterScreen({navigation}) {
           phone,
           created_at: new Date().getTime(),
         })
+      .then( () => {})
+    } else {
+    }
 
   };
   return (

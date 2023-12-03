@@ -23,6 +23,7 @@ function App() {
       <PaperProvider>
         {/* <SafeAreaView> */}
         <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
           <Stack.Screen
             name="Register"
             component={RegisterScreen}
@@ -33,7 +34,6 @@ function App() {
             component={LoginScreen}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
           <Stack.Screen name="Detail_Recipe" component={DetailRecipe} options={{headerShown: false}} />
         </Stack.Navigator>
         {/* </SafeAreaView> */}
