@@ -77,13 +77,20 @@ useEffect(() => {
   return (
     
     <ScrollView style={styles.root}>
+          <View style={styles.navbar}>
           <Searchbar
             label="Search Pasta, Bread, etc"
             value={keyword}
             style={styles.searchBox}
             icon={()=><Ionicons name="search" size={30}/>}
             onChangeText={text => setKeyword(text)}
+            placeholder='Search For Recipe'
           />
+
+          <Pressable onPress={() => navigation.navigate('Profile')}>
+          <View style={styles.profile}></View>
+          </Pressable>
+          </View>
 
           <Text style={styles.heading_1}>Popular for you</Text>
           <View
@@ -176,12 +183,24 @@ const styles = StyleSheet.create({
     },
     searchBox: {
       backgroundColor: '#EFEFEF',
+      flex: 1,
     },
     heading_1: {
       marginTop: 20,
       fontSize: 18,
       fontWeight: 800,
     },
+    profile: {
+      backgroundColor: '#314422',
+      width: 50,
+      height: 50,
+      borderRadius: 30,
+    },
+    navbar: {
+      flexDirection: 'row',
+      flex: 1,
+      gap: 5
+    }
   });
 
 export default HomeScreen

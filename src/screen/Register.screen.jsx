@@ -27,12 +27,10 @@ function RegisterScreen({navigation}) {
       })
       .catch(error => {
         const {code} = error;
-        // Make sure to check if multi factor authentication is required
+        
         if (code === 'auth/multi-factor-auth-required') {
           return;
         } 
-
-        // Other error
       });
 
       

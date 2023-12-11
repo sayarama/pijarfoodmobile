@@ -19,8 +19,7 @@ function LoginScreen({navigation}) {
       })
       .catch(error => {
         const {code} = error;
-        setMessage(code)
-        // Make sure to check if multi factor authentication is required
+        
         if (code === 'auth/email-already-exists') {
           setVisible(true);
           setMessageSnackbar('Email already exists!');
@@ -35,8 +34,6 @@ function LoginScreen({navigation}) {
           setVisible(true);
           setMessageSnackbar('Password must be six characters!');
         }
-
-        // Other error
       });
   };
   return (

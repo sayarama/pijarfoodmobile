@@ -14,6 +14,7 @@ import HomeScreen from './screen/Home.screen';
 import DetailRecipe from './screen/DetailRecipe.screen';
 import LoginScreen from './screen/Login.screen';
 import RegisterScreen from './screen/Register.screen';
+import Profile from './screen/Profile.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ function App() {
             options={{headerShown: false}}
           />
           <Stack.Screen name="Detail_Recipe" component={DetailRecipe} options={{headerShown: false}} />
+          <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}} />
         </Stack.Navigator>
         {/* </SafeAreaView> */}
       </PaperProvider>
