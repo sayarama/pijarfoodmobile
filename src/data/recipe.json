@@ -8,6 +8,7 @@
             "title": "Stuffed Bell Peppers",
             "link": "https://www.youtube.com/watch?v=ektsiKFVqks"
         },
+        "Category": "chicken",
         "isPopular": true,
         "isNew": false
     },
@@ -20,6 +21,7 @@
             "title": "Chicken Alfredo Pasta",
             "link": "https://www.youtube.com/watch?v=LPPcNPdq_j4"
         },
+        "Category": "chicken",
         "isPopular": false,
         "isNew": true
     },
@@ -32,6 +34,7 @@
             "title": "Grilled Salmon",
             "link": "https://www.youtube.com/watch?v=n7SnRm0RpdU"
         },
+        "Category": "seafood",
         "isPopular": true,
         "isNew": false
     },
@@ -44,6 +47,7 @@
             "title": "Vegetarian Stir-Fry",
             "link": "https://m.youtube.com/watch?v=lNdFgQ4fBCI"
         },
+        "Category": "seafood",
         "isPopular": false,
         "isNew": true
     },
@@ -56,6 +60,7 @@
             "title": "Shrimp Scampi",
             "link": "https://www.youtube.com/watch?v=P512JO-OdAM"
         },
+        "Category": "seafood",
         "isPopular": true,
         "isNew": false
     },
@@ -68,6 +73,7 @@
             "title": "Mushroom Risotto",
             "link": "https://www.youtube.com/watch?v=ju9H1RlYNxk"
         },
+        "Category": "soup",
         "isPopular": false,
         "isNew": true
     },
@@ -80,6 +86,7 @@
             "title": "BBQ Pulled beef",
             "link": "https://www.youtube.com/watch?v=FCVwKqQkZHg"
         },
+        "Category": "Chicken",
         "isPopular": true,
         "isNew": false
     },
@@ -92,6 +99,7 @@
             "title": "Caprese Salad",
             "link": "https://www.youtube.com/watch?v=aG7IR9ZRzWw"
         },
+        "Category": "soup",
         "isPopular": false,
         "isNew": true
     },
@@ -104,6 +112,7 @@
             "title": "Lemon Garlic Chicken",
             "link": "https://www.youtube.com/watch?v=uHtm-_WSg2w"
         },
+        "Category": "chicken",
         "isPopular": true,
         "isNew": false
     },
@@ -116,6 +125,7 @@
             "title": "Pumpkin Soup",
             "link": "https://www.youtube.com/watch?v=olTgHutWRSI"
         },
+        "Category": "soup",
         "isPopular": false,
         "isNew": true
     }
