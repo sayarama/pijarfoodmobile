@@ -16,6 +16,7 @@ import firestore from '@react-native-firebase/firestore';
 
 import RecipeList from '../data/recipe.json';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialCommu from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const NewRecipe = [
   {
@@ -95,7 +96,7 @@ function HomeScreen({navigation}) {
         />
 
         <Pressable onPress={() => navigation.navigate('Profile')}>
-          <View style={styles.profile}></View>
+          <MaterialCommu name="account-circle-outline" size={50}/>
         </Pressable>
       </View>
 
@@ -276,16 +277,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 800,
   },
-  profile: {
-    backgroundColor: '#314422',
-    width: 50,
-    height: 50,
-    borderRadius: 30,
-  },
   navbar: {
     flexDirection: 'row',
     flex: 1,
     gap: 5,
+    alignItems: 'center',
   },
   searchResult: {
     padding: 10,
