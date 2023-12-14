@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -18,47 +18,6 @@ import RecipeList from '../data/recipe.json';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommu from 'react-native-vector-icons/MaterialCommunityIcons'
 
-const NewRecipe = [
-  {
-    id: '1',
-    title: 'Banana Lemonilo',
-    image: BreadImg,
-  },
-  {
-    id: '2',
-    title: 'Sandwich Egg',
-    image: EggImg,
-  },
-  {
-    id: '3',
-    title: 'Banana Lemonilo',
-    image: BreadImg,
-  },
-  {
-    id: '4',
-    title: 'Sandwich Egg',
-    image: EggImg,
-  },
-];
-
-const Item = ({item}) => (
-  <View style={{borderRadius: 10, marginTop: 15}}>
-    <ImageBackground
-      source={item.image}
-      resizeMode="cover"
-      imageStyle={{borderRadius: 10}}
-      style={{
-        height: 200,
-        width: 150,
-        justifyContent: 'flex-end',
-        padding: 30,
-      }}>
-      <Text style={{color: '#fff', fontSize: 14, fontWeight: 500}}>
-        {item.title}
-      </Text>
-    </ImageBackground>
-  </View>
-);
 
 function HomeScreen({navigation}) {
   const [search, setSearch] = React.useState(null);
@@ -95,9 +54,10 @@ function HomeScreen({navigation}) {
           onChangeText={search => setSearch(search)}
         />
 
+
         <Pressable onPress={() => navigation.navigate('Profile')}>
-          <MaterialCommu name="account-circle-outline" size={50}/>
-        </Pressable>
+        <MaterialCommu name="account-circle-outline" size={50}/>
+      </Pressable>
       </View>
 
       {search ? (

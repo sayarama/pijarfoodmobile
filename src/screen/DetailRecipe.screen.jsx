@@ -33,7 +33,8 @@ function DetailRecipe({ navigation, route }) {
                     tempData.push(documentSnapshot);
                 });
                 setCommentList(tempData);
-            });
+            })
+            
     };
 
 

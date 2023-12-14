@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text } from 'react-native-paper'
 import {Image, ImageBackground, View, StyleSheet, Pressable} from 'react-native'
-// import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Antdesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommu from 'react-native-vector-icons/MaterialCommunityIcons'
 import firestore from '@react-native-firebase/firestore';
 
+
 function Profile({navigation}) {
+
+  const [profile, setProfile] = useState();
+
+  const handleProfile = async () => {
+    try {
+      const users = await firestore().collection('users').get()
+      // console.log("inia adalah users =>", users.docs[0].data())
+      setProfile(users.docs[0].data())
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  // Logout Handle
   const handleLogout = async () => {
     await AsyncStorage.removeItem('User');
     setTimeout(() => {
@@ -15,8 +28,10 @@ function Profile({navigation}) {
     });
   };
 
-  const user = firestore().collection('Users').get();
-  console.log(user)
+  useEffect(() => {
+    handleProfile()
+  }, [])
+
   return (
     <View style={styles.main}>
       <Pressable onPress={() => navigation.navigate('Home')}>
@@ -29,8 +44,8 @@ function Profile({navigation}) {
     <View style={styles.imageSection}>
       <Image height={80} width={80} borderRadius={100} source={{uri: 'https://cdn.openart.ai/uploads/image_jxmEf8AP_1688790954471_512.webp'}}/>
       <View>
-        <Text variant='headlineSmall' style={{fontWeight: 800}}>Ilham Randa</Text>
-        <Text style={{color: '#333'}}>gontaganti@gmail.com</Text>
+        <Text variant='headlineSmall' style={{fontWeight: 800}}>{profile?.fullname}</Text>
+        <Text style={{color: '#333'}}>{profile?.email}</Text>
       </View>
     </View>
 
