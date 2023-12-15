@@ -71,6 +71,7 @@ function Profile({navigation}) {
             {profile?.fullname}
           </Text>
           <Text style={{color: '#333'}}>{profile?.email}</Text>
+          <Text style={{color: '#333'}}>{profile?.phone}</Text>
         </View>
       </View>
 
