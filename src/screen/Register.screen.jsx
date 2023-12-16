@@ -23,21 +23,10 @@ function RegisterScreen({navigation}) {
       .then(() => {
         navigation.navigate('Login')
         // User has not enrolled a second factor
-        
-      })
-      .catch(error => {
-        const {code} = error;
-        
-        if (code === 'auth/multi-factor-auth-required') {
-          return;
-        } 
-      });
-
-      
-
-      firestore()
+        firestore()
         .collection('users')
-        .add({
+        .doc(auth().currentUser.uid)
+        .set({
           email,
           password,
           fullname,
@@ -45,6 +34,16 @@ function RegisterScreen({navigation}) {
           created_at: new Date().getTime(),
         })
       .then( () => {})
+        
+      })
+      .catch(error => {
+        console.log('error', error)
+        const {code} = error;
+        
+        if (code === 'auth/multi-factor-auth-required') {
+          return;
+        } 
+      });
     } else {
       setVisible(true);
       setMessageSnackbar('Password is not same!');

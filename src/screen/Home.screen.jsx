@@ -8,7 +8,7 @@ import {
   FlatList,
   Pressable,
 } from 'react-native';
-import {Searchbar, Text} from 'react-native-paper';
+import {Button, Searchbar, Text} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import BreadImg from '../assets/bread.png';
 import EggImg from '../assets/egg.png';
@@ -17,10 +17,25 @@ import firestore from '@react-native-firebase/firestore';
 import RecipeList from '../data/recipe.json';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommu from 'react-native-vector-icons/MaterialCommunityIcons'
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../redux/state/counterState'
+import { setUserAuth } from '../redux/state/userAuthState';
+import auth from '@react-native-firebase/auth';
+
 
 
 function HomeScreen({navigation}) {
   const [search, setSearch] = React.useState(null);
+
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    dispatch(setUserAuth(JSON.stringify(user)));
+  }
+
+
 
   function onResult(QuerySnapshot) {
     QuerySnapshot.forEach(async documentSnapshot => {
@@ -29,6 +44,7 @@ function HomeScreen({navigation}) {
           'User',
           JSON.stringify(documentSnapshot.data()),
         );
+        
       } catch (error) {}
     });
   }
@@ -39,10 +55,21 @@ function HomeScreen({navigation}) {
 
   useEffect(() => {
     firestore().collection('users').onSnapshot(onResult, onError);
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; 
   }, []);
 
   return (
     <ScrollView style={styles.root}>
+      <Button
+      onPress={() => dispatch(increment())}>
+        tambah
+      </Button>
+      <Button
+      onPress={() => dispatch(decrement())}>
+        kurang
+      </Button>
+      <Text>{count}</Text>
       <View style={styles.navbar}>
         <Searchbar
           placeholder="Search Food Recipe"

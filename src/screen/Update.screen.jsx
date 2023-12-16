@@ -3,9 +3,9 @@ import {Button, Text, TextInput} from 'react-native-paper';
 import {StyleSheet, View, Pressable} from 'react-native';
 import Antdesign from 'react-native-vector-icons/AntDesign';
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth'
 
 function Update({navigation}) {
-  const [email, setEmail] = useState();
   const [fullname, setFullname] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
 
@@ -14,10 +14,9 @@ function Update({navigation}) {
   const handleUpdate = () => {
     firestore()
       .collection('users')
-      .doc("2Ymzu27o0sUVmVpHu2VB")
+      .doc(auth().currentUser.uid)
       .update({
         fullname: fullname,
-        email: email,
         phone: phoneNumber,
       })
       .then(() => {
@@ -46,15 +45,6 @@ function Update({navigation}) {
           mode="outlined"
           onChangeText={setFullname}
           value={fullname}
-        />
-
-        <TextInput
-          style={style.inputBar}
-          label="Email"
-          placeholder="Your Email"
-          mode="outlined"
-          onChangeText={setEmail}
-          value={email}
         />
 
         <TextInput

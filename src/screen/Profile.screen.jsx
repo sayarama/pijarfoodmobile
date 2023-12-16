@@ -11,15 +11,28 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Antdesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommu from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUserProfile } from '../redux/state/userProfileState';
 
 function Profile({navigation}) {
-  const [profile, setProfile] = useState();
+  // const [profile, setProfile] = useState();
+  const userAuth = useSelector((state) => state.userAuth.value)
+  const parseUserAuth = JSON.parse(userAuth)
+
+  const profile = useSelector((state) => state.userProfile.value)
+  const parseProfile = profile ? JSON.parse(profile) : {}
+  const dispatch = useDispatch()
 
   const handleProfile = async () => {
     try {
-      const users = await firestore().collection('users').get();
-      // console.log("inia adalah users =>", users.docs[0].data())
-      setProfile(users.docs[0].data());
+      firestore()
+      .collection('users')
+      .where('email', '==', parseUserAuth.email)
+      .get()
+      .then(async querySnapshot => {
+        querySnapshot.forEach(documentSnapshot => {
+          dispatch(setUserProfile(JSON.stringify(documentSnapshot._data)));
+        })})
     } catch (err) {
       console.log(err);
     }
@@ -27,17 +40,17 @@ function Profile({navigation}) {
   // Logout Handle
   const handleLogout = async () => {
     await AsyncStorage.removeItem('User');
-    setTimeout(() => {
-      navigation.navigate('Home');
-    });
-
-    // AsyncStorage.getAllKeys().then(keys => {
-    //   return AsyncStorage.multiGet(keys);
-    // }).then(keyValuePairs => {
-    //   console.log('AsyncStorage Contents:', keyValuePairs);
-    // }).catch(error => {
-    //   console.error('Error retrieving AsyncStorage contents:', error);
+    // setTimeout(() => {
+    //   navigation.navigate('Home');
     // });
+
+    AsyncStorage.getAllKeys().then(keys => {
+      return AsyncStorage.multiGet(keys);
+    }).then(keyValuePairs => {
+      console.log('AsyncStorage Contents:', keyValuePairs);
+    }).catch(error => {
+      console.error('Error retrieving AsyncStorage contents:', error);
+    });
   };
 
   useEffect(() => {
@@ -68,10 +81,9 @@ function Profile({navigation}) {
         />
         <View>
           <Text variant="headlineSmall" style={{fontWeight: 800}}>
-            {profile?.fullname}
+            {parseProfile?.fullname}
           </Text>
-          <Text style={{color: '#333'}}>{profile?.email}</Text>
-          <Text style={{color: '#333'}}>{profile?.phone}</Text>
+          <Text style={{color: '#333'}}>{parseProfile?.phone}</Text>
         </View>
       </View>
 

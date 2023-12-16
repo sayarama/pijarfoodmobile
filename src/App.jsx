@@ -17,34 +17,41 @@ import RegisterScreen from './screen/Register.screen';
 import Profile from './screen/Profile.screen';
 import Category from './screen/Category.screen';
 import Update from './screen/Update.screen';
+import { store } from './redux/store';
+import { Provider } from 'react-redux'
+
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
+    
     <NavigationContainer>
+      
       <PaperProvider>
-        {/* <SafeAreaView> */}
-        <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
-          <Stack.Screen
-            name="Register"
-            component={RegisterScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen name="Detail_Recipe" component={DetailRecipe} options={{headerShown: false}} />
-          <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}} />
-          <Stack.Screen name="Category" component={Category} options={{headerShown: false}} />
-          <Stack.Screen name="Update" component={Update} options={{headerShown: false}} />
-        </Stack.Navigator>
-        {/* </SafeAreaView> */}
-      </PaperProvider>
-    </NavigationContainer>
+      {/* <SafeAreaView> */}
+      <Provider store={store}>
+      <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Detail_Recipe" component={DetailRecipe} options={{headerShown: false}} />
+        <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}} />
+        <Stack.Screen name="Category" component={Category} options={{headerShown: false}} />
+        <Stack.Screen name="Update" component={Update} options={{headerShown: false}} />
+      </Stack.Navigator>
+      </Provider>
+      {/* </SafeAreaView> */}
+    </PaperProvider>
+  </NavigationContainer>
   );
 }
 
