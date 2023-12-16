@@ -61,15 +61,6 @@ function HomeScreen({navigation}) {
 
   return (
     <ScrollView style={styles.root}>
-      <Button
-      onPress={() => dispatch(increment())}>
-        tambah
-      </Button>
-      <Button
-      onPress={() => dispatch(decrement())}>
-        kurang
-      </Button>
-      <Text>{count}</Text>
       <View style={styles.navbar}>
         <Searchbar
           placeholder="Search Food Recipe"
