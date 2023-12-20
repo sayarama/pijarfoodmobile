@@ -150,6 +150,10 @@ Contributions are what make the open source community such an amazing place to b
 5. Push to the Branch (`git push origin feature/NewFeature`)
 6. Open a Pull Request on Github
 
+## Related Project
+
+[`Website Pijarfood`](https://github.com/sayarama/pijar-food-fe.git)
+[`Live Website Pijarfood`](https://pijar-food-team-b.vercel.app/)
 
 ## Contact
 
